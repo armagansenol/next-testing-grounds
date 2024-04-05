@@ -1,0 +1,4 @@
+.footer {
+  @include dims(100vw, 100vh);
+  font-size: desktop-vw(100px);
+}

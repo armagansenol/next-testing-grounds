@@ -1,0 +1,6 @@
+.defaultLayout {
+  background-color: var(--theme-primary);
+  overflow: hidden;
+  position: relative;
+  z-index: z-index("main");
+}

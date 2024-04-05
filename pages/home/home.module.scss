@@ -1,0 +1,118 @@
+.box {
+  .index {
+    @include position(absolute, 0, auto, auto, 0);
+    font-size: desktop-vw(50px);
+    color: var(black);
+    z-index: 999;
+  }
+
+  .colsC {
+    position: relative;
+  }
+
+  .cols {
+    --gap: #{desktop-vw(120px)};
+
+    @include position(absolute, 0, auto, 100%, 50%);
+    @include dims(calc(300vw + var(--gap) * 2), 300vh);
+    align-content: stretch;
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(3, 1fr);
+    transform-origin: top center;
+    transform: translateX(-50%) scale(0.307);
+
+    @include outline(red);
+
+    .col {
+      gap: var(--gap);
+      flex-shrink: 0;
+    }
+  }
+
+  .imgC {
+    @include dims(var(--item-width), 100svh);
+    background: var(--fuego);
+    border-radius: desktop-vw(16px);
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+
+    .t {
+      @include position(absolute, 50%, auto, auto, 50%);
+      @include dims(100%);
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.intro {
+  .title {
+    font-size: desktop-vw(100px);
+  }
+}
+
+.circleImg {
+  @include dims(500px);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.cardsC {
+  .textC {
+    .text {
+      @include dims(desktop-vw(800px), auto);
+      font-size: desktop-vw(100px);
+      margin: desktop-vw(200px) 0;
+      text-align: center;
+    }
+  }
+
+  .cards {
+    --card-padding: #{desktop-vw(10px)};
+    @include dims(100vw, 100vh);
+    position: relative;
+
+    .center {
+      @include position(absolute, 50%, auto, auto, 50%);
+      @include dims(calc(100vw - var(--card-padding) * 2), calc(100vh - var(--card-padding) * 2));
+      transform: translate(-50%, -50%);
+    }
+
+    .card {
+      @include position(absolute, 0, 0, 0, 0);
+      border-radius: desktop-vw(32px);
+      overflow: hidden;
+
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+
+      &:nth-child(1) {
+        transform: translateY(0);
+      }
+
+      &:nth-child(2) {
+        transform: translateY(calc(100% + var(--card-padding) * 3));
+      }
+
+      &:nth-child(3) {
+        transform: translateY(calc(200% + var(--card-padding) * 3));
+      }
+
+      &:nth-child(4) {
+        transform: translateY(calc(300% + var(--card-padding) * 3));
+      }
+
+      > span {
+        @include position(absolute, 50%, auto, auto, 50%);
+        transform: translate(-50%, -50%);
+        font-size: desktop-vw(100px);
+      }
+
+      .mediaC {
+        @include dims(50%, auto);
+      }
+    }
+  }
+}

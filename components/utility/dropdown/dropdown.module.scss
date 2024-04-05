@@ -1,0 +1,74 @@
+.select {
+  --font-size: #{desktop-vw(15px)};
+  --padding-x: #{desktop-vw(16px)};
+  @include dims(100%);
+  border: 1px solid var(--dire-wolf);
+  border-radius: desktop-vw(64px);
+  position: relative;
+
+  @include mobile {
+    --font-size: #{mobile-vw(15px)};
+    --padding-x: #{mobile-vw(16px)};
+    border-radius: mobile-vw(64px);
+  }
+
+  .selectTrigger {
+    @include position(absolute, 0, 0, 0, 0);
+    color: var(--dire-wolf);
+    font-family: var(--font-visby-cf);
+    font-size: var(--font-size);
+    font-weight: 400;
+    padding-left: var(--padding-x);
+  }
+
+  .options {
+    @include position(absolute, calc(100% + desktop-vw(12px)), 0, auto, 0);
+    @include dims(100%, auto);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: desktop-vw(8px);
+    overflow: hidden;
+    padding: desktop-vw(4px);
+    transition: 400ms all ease;
+    z-index: 100;
+
+    @include mobile {
+      border-radius: mobile-vw(8px);
+      padding: mobile-vw(4px);
+      transform: translateZ(mobile-vw(10px));
+    }
+
+    .option {
+      border-radius: desktop-vw(4px);
+      color: var(--white);
+      font-family: var(--font-visby-cf);
+      font-size: var(--font-size);
+      font-weight: 400;
+      padding: desktop-vw(12px) var(--padding-x);
+      position: relative;
+      transition: 200ms all ease;
+
+      @include mobile {
+        border-radius: mobile-vw(4px);
+        padding: mobile-vw(12px) var(--padding-x);
+      }
+
+      @include hover {
+        &:hover {
+          background-color: var(--cascading-white);
+          color: var(--dire-wolf);
+        }
+      }
+    }
+  }
+
+  .iconC {
+    @include position(absolute, 50%, var(--padding-x), auto, auto);
+    @include dims(desktop-vw(14px), auto);
+    transform: translateY(-50%);
+
+    @include mobile {
+      @include dims(mobile-vw(14px), auto);
+    }
+  }
+}

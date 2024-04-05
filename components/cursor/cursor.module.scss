@@ -1,0 +1,60 @@
+.cursor {
+  @include position(fixed, 0, auto, auto, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 100ms opacity ease;
+  z-index: z-index("cursor");
+
+  &.visible {
+    opacity: 1;
+  }
+
+  .c {
+    @include position(absolute, 50%, auto, auto, 50%);
+    @include dims(desktop-vw(18px));
+    background-color: var(--fuego);
+    border-radius: 50%;
+    transition: 200ms background-color cubic-bezier(0.215, 0.61, 0.355, 1),
+      200ms color cubic-bezier(0.215, 0.61, 0.355, 1), 400ms width cubic-bezier(0.215, 0.61, 0.355, 1),
+      400ms height cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate(-50%, -50%);
+
+    .mediaC {
+      @include dims(100%);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .text {
+      @include position(absolute, 50%, auto, auto, calc(100% + desktop-vw(10px)));
+      color: var(--fuego);
+      display: block;
+      font-family: var(--font-nb-international-pro);
+      font-size: desktop-vw(16px);
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(-50%);
+      white-space: nowrap;
+    }
+
+    &.default {
+      @include dims(desktop-vw(18px));
+      background-color: var(--fuego);
+    }
+
+    &.click {
+      @include dims(desktop-vw(18px));
+    }
+
+    &.media {
+      @include dims(desktop-vw(200px));
+      background-color: transparent;
+      color: var(--fuego);
+      white-space: nowrap;
+    }
+
+    &.hide {
+      @include dims(0px);
+    }
+  }
+}

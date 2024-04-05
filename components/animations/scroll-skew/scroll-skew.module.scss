@@ -1,0 +1,9 @@
+.scrollSkew {
+  transform: translateX(-175vw);
+  width: 300vw;
+
+  .marqueeInner {
+    display: flex;
+    will-change: transform;
+  }
+}
