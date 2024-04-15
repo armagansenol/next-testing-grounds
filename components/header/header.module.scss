@@ -1,0 +1,5 @@
+.header {
+  @include position(fixed, 0, 0, auto, 0);
+  padding: desktop-vw(20px) 0;
+  z-index: z-index("header");
+}

@@ -4,7 +4,6 @@ import cx from "clsx"
 import { useRef, useState } from "react"
 import { useOnClickOutside } from "usehooks-ts"
 
-import { IconArrowRoof } from "@/components/icons/icon-arrow-roof"
 import { truncateString } from "@/lib/utils"
 
 interface Option {
@@ -66,9 +65,7 @@ const Dropdown = ({ options, onChange, label, defaultValue, selectedOption = def
           ))}
         </ul>
       )}
-      <div className={s.iconC}>
-        <IconArrowRoof fill="var(--black)" />
-      </div>
+      <div className={s.iconC}></div>
     </div>
   )
 }
