@@ -1,0 +1,90 @@
+.mainSlider {
+  padding-top: desktop-vw(20px);
+  position: relative;
+
+  .textC {
+    position: relative;
+    width: desktop-vw(600px);
+
+    .text {
+      @include position(absolute, desktop-vw(150px), auto, auto, desktop-vw(60px));
+      opacity: 0;
+      transition: 400ms opacity ease;
+      width: desktop-vw(400px);
+
+      &.visible {
+        opacity: 1;
+      }
+
+      > h2 {
+        font-size: desktop-vw(35px);
+        margin-bottom: desktop-vw(10px);
+      }
+
+      > p {
+        font-size: desktop-vw(15px);
+        margin-bottom: desktop-vw(30px);
+      }
+
+      > button {
+        font-size: desktop-vw(15px);
+      }
+    }
+  }
+
+  .visuals {
+    padding-right: desktop-vw(60px);
+
+    .mediaC {
+      @include dims(desktop-vw(745px), desktop-vw(520px));
+      border-radius: desktop-vw(5px);
+      overflow: hidden;
+      position: relative;
+
+      .media {
+        @include position(absolute, 0, 0, 0, 0);
+        opacity: 0;
+        transition: 800ms opacity ease;
+
+        &.visible {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .miniMapC {
+    @include position(absolute, auto, auto, 0, desktop-vw(60px));
+    gap: desktop-vw(6px);
+
+    .miniMap {
+      gap: desktop-vw(8px);
+
+      .media {
+        @include dims(desktop-vw(50px), desktop-vw(45px));
+        border-radius: desktop-vw(5px);
+        opacity: 0.3;
+        overflow: hidden;
+        transition: 800ms opacity ease;
+
+        &.visible {
+          opacity: 1;
+        }
+      }
+    }
+
+    .progressBar {
+      @include dims(100%, desktop-vw(4px));
+      background-color: var(--pinball);
+      border-radius: desktop-vw(4px);
+      overflow: hidden;
+
+      .bar {
+        @include dims(100%);
+        background-color: var(--black);
+        border-radius: desktop-vw(4px);
+        transform-origin: left center;
+      }
+    }
+  }
+}

@@ -10,33 +10,33 @@ import { Link } from "@/components/utility/link"
 export default function Header() {
   const ref = useRef(null)
 
-  useGSAP(
-    () => {
-      const tl = gsap
+  // useGSAP(
+  //   () => {
+  //     const tl = gsap
 
-        .from(ref.current, {
-          yPercent: -100,
-          paused: true,
-          duration: 0.2,
-        })
-        .progress(1)
+  //       .from(ref.current, {
+  //         yPercent: -100,
+  //         paused: true,
+  //         duration: 0.2,
+  //       })
+  //       .progress(1)
 
-      ScrollTrigger.create({
-        id: "header",
-        animation: tl,
-        trigger: ref.current,
-        markers: true,
-        start: "top top",
-        end: "max",
-        onUpdate: (self) => {
-          self.direction === -1 ? tl.play() : tl.reverse()
-        },
-      })
-    },
-    {
-      scope: ref,
-    }
-  )
+  //     ScrollTrigger.create({
+  //       id: "header",
+  //       animation: tl,
+  //       trigger: ref.current,
+  //       markers: true,
+  //       start: "top top",
+  //       end: "max",
+  //       onUpdate: (self) => {
+  //         self.direction === -1 ? tl.play() : tl.reverse()
+  //       },
+  //     })
+  //   },
+  //   {
+  //     scope: ref,
+  //   }
+  // )
   return (
     <header className={cx(s.header, "flex items-center justify-center gap-10 bg-lime-300")} ref={ref}>
       <div>
@@ -44,6 +44,12 @@ export default function Header() {
       </div>
       <div>
         <Link href="/page-two">PAGE TWO</Link>
+      </div>
+      <div>
+        <Link href="/file-upload">FILE UPLOAD</Link>
+      </div>
+      <div>
+        <Link href="/slider">SLIDER</Link>
       </div>
     </header>
   )
