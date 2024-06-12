@@ -7,6 +7,7 @@
 @import "./_utils.scss";
 @import "./_themes.scss";
 @import "./_scroll.scss";
+@import "./_tiptap.scss";
 
 @tailwind base;
 @tailwind components;
@@ -17,7 +18,7 @@
 // }
 
 :root {
-  --header-height: #{desktop-vw(120px)};
+  --header-height: #{desktop-vw(100px)};
   --page-padding-top: #{desktop-vw(50px)};
   --upcoming-accordion-height: #{desktop-vw(30px)};
   --nav-height: #{desktop-vw(50px)};

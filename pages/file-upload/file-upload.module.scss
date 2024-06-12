@@ -1,0 +1,20 @@
+.field {
+  @include dims(desktop-vw(500px));
+  background: red;
+  position: relative;
+
+  .text {
+    color: var(--black);
+    pointer-events: none;
+  }
+
+  .input {
+    @include position(absolute, 0, 0, 0, 0);
+    @include dims(100%);
+    background: blue;
+  }
+
+  input[type="file"] {
+    opacity: 0;
+  }
+}

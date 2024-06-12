@@ -1,0 +1,14 @@
+.tiptap {
+  @include dims(desktop-vw(800px), auto);
+  border: 1px solid var(--black);
+  border-radius: desktop-vw(32px);
+  padding: desktop-vw(40px) desktop-vw(20px);
+
+  .buttons {
+    > button {
+      border: 1px solid var(--black);
+      border-radius: desktop-vw(16px);
+      padding: desktop-vw(4px) desktop-vw(8px);
+    }
+  }
+}

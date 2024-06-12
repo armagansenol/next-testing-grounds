@@ -1,0 +1,39 @@
+.formItem {
+  .input {
+    padding: desktop-vw(10px) desktop-vw(20px);
+  }
+
+  .selectC {
+    gap: desktop-vw(10px);
+
+    .countryCodeTrigger {
+      @include dims(desktop-vw(150px), auto);
+      padding: desktop-vw(10px) desktop-vw(20px);
+      z-index: 99999;
+    }
+
+    .countryCodeContent {
+      background: red;
+      z-index: 99999 !important;
+
+      .countryCodeItem {
+        padding: desktop-vw(10px) desktop-vw(20px);
+      }
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: desktop-vw(20px);
+
+  .row {
+    display: flex;
+    gap: desktop-vw(20px);
+
+    .fieldC {
+      flex: 1;
+    }
+  }
+}

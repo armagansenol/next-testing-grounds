@@ -1,9 +1,7 @@
 import s from "./header.module.scss"
 
 import cx from "clsx"
-import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
-import { ScrollTrigger, gsap } from "@/lib/gsap"
 
 import { Link } from "@/components/utility/link"
 
@@ -50,6 +48,39 @@ export default function Header() {
       </div>
       <div>
         <Link href="/slider">SLIDER</Link>
+      </div>
+      <div>
+        <Link href="/form-test">FORM TEST</Link>
+      </div>
+      <div>
+        <Link href="/codrops">CODROPS</Link>
+      </div>
+      <div>
+        <Link href="/matter-js">matter.js</Link>
+      </div>
+      <div>
+        <Link href="/matter-js-2">matter.js 2</Link>
+      </div>
+      <div>
+        <Link href="/matter-js-3">matter.js 3</Link>
+      </div>
+      <div>
+        <Link href="/matter-js-4">matter.js 4</Link>
+      </div>
+      <div>
+        <Link href="/splitting-js">splitting.js</Link>
+      </div>
+      <div>
+        <Link href="/react-split-text">react split text</Link>
+      </div>
+      <div>
+        <Link href="/three-fiber">three fiber</Link>
+      </div>
+      <div>
+        <Link href="/three-fiber-ultia">three fiber ultia</Link>
+      </div>
+      <div>
+        <Link href="/tiptap-test">tiptap</Link>
       </div>
     </header>
   )

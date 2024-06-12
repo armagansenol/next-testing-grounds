@@ -45,8 +45,8 @@ const Cursor = () => {
   useGSAP(
     () => {
       if (active) {
-        const quickX = gsap.quickTo(ref.current, "x", { duration: 0.5, ease: "power3" })
-        const quickY = gsap.quickTo(ref.current, "y", { duration: 0.5, ease: "power3" })
+        const quickX = gsap.quickTo(ref.current, "x", { duration: 0.1, ease: "power3" })
+        const quickY = gsap.quickTo(ref.current, "y", { duration: 0.1, ease: "power3" })
 
         quickX(mouse.x ?? 0)
         quickY(mouse.y ?? 0)

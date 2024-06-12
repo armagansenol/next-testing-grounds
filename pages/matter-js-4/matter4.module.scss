@@ -1,0 +1,33 @@
+.wrapper {
+  .matter {
+    &::after {
+      content: "";
+      @include position(absolute, 0, 0, 0, 0);
+      border: 1px solid orangered;
+      pointer-events: none;
+    }
+
+    .box {
+      --move-x: 0px;
+      --move-y: 0px;
+      --rotate: 0rad;
+      @include dims(100px);
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.05);
+      transform: translate(-50%, -50%) rotate(var(--rotate));
+      top: var(--move-y);
+      left: var(--move-x);
+      position: absolute;
+      pointer-events: none;
+
+      * {
+        pointer-events: all;
+      }
+
+      .img {
+        pointer-events: none;
+        user-select: none;
+      }
+    }
+  }
+}

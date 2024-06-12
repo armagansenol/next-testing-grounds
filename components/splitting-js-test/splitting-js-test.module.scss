@@ -1,0 +1,8 @@
+.text {
+  @include position(absolute, 0, 0, 0, 0);
+  font-size: desktop-vw(36px);
+  font-weight: 700;
+  line-height: 1.45;
+  margin: desktop-vw(100px) auto;
+  width: desktop-vw(800px);
+}

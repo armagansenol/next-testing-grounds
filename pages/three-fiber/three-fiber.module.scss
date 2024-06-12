@@ -1,0 +1,3 @@
+.wrapper {
+  @include dims(auto, calc(100vh - var(--header-height)));
+}
