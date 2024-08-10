@@ -1,87 +1,55 @@
 import s from "./header.module.scss"
 
 import cx from "clsx"
-import { useRef } from "react"
 
+import { Button } from "@/components/ui/button"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Link } from "@/components/utility/link"
 
 export default function Header() {
-  const ref = useRef(null)
+  const links = [
+    { value: "/", label: "home" },
+    { value: "/page-two", label: "page two" },
+    { value: "/file-upload", label: "file upload" },
+    { value: "/form-test", label: "form test" },
+    { value: "/matter-js", label: "matter.js" },
+    { value: "/matter-js-2", label: "matter.js 2" },
+    { value: "/matter-js-3", label: "matter.js 3" },
+    { value: "/matter-js-4", label: "matter.js 4" },
+    { value: "/splitting-js", label: "splitting.js" },
+    { value: "/react-split-text", label: "react split text" },
+    { value: "/three-fiber", label: "three fiber" },
+    { value: "/three-fiber-ultia", label: "three fiber ultia" },
+    { value: "/tiptap-test", label: "tiptap" },
+    { value: "/gltfjsx-model-test", label: "gltfjsx" },
+    { value: "/model-pop", label: "model pop" },
+    { value: "/three-slider", label: "three slider" },
+    { value: "/shader-transitions", label: "shader transitions" },
+    { value: "/transmission-effect", label: "transmission effect" },
+    { value: "/morph-on-scroll", label: "morph on scroll" },
+    { value: "/pop-slider", label: "pop slider" },
+  ]
 
-  // useGSAP(
-  //   () => {
-  //     const tl = gsap
-
-  //       .from(ref.current, {
-  //         yPercent: -100,
-  //         paused: true,
-  //         duration: 0.2,
-  //       })
-  //       .progress(1)
-
-  //     ScrollTrigger.create({
-  //       id: "header",
-  //       animation: tl,
-  //       trigger: ref.current,
-  //       markers: true,
-  //       start: "top top",
-  //       end: "max",
-  //       onUpdate: (self) => {
-  //         self.direction === -1 ? tl.play() : tl.reverse()
-  //       },
-  //     })
-  //   },
-  //   {
-  //     scope: ref,
-  //   }
-  // )
   return (
-    <header className={cx(s.header, "flex items-center justify-center gap-10 bg-lime-300")} ref={ref}>
-      <div>
-        <Link href="/">HOME</Link>
-      </div>
-      <div>
-        <Link href="/page-two">PAGE TWO</Link>
-      </div>
-      <div>
-        <Link href="/file-upload">FILE UPLOAD</Link>
-      </div>
-      <div>
-        <Link href="/slider">SLIDER</Link>
-      </div>
-      <div>
-        <Link href="/form-test">FORM TEST</Link>
-      </div>
-      <div>
-        <Link href="/codrops">CODROPS</Link>
-      </div>
-      <div>
-        <Link href="/matter-js">matter.js</Link>
-      </div>
-      <div>
-        <Link href="/matter-js-2">matter.js 2</Link>
-      </div>
-      <div>
-        <Link href="/matter-js-3">matter.js 3</Link>
-      </div>
-      <div>
-        <Link href="/matter-js-4">matter.js 4</Link>
-      </div>
-      <div>
-        <Link href="/splitting-js">splitting.js</Link>
-      </div>
-      <div>
-        <Link href="/react-split-text">react split text</Link>
-      </div>
-      <div>
-        <Link href="/three-fiber">three fiber</Link>
-      </div>
-      <div>
-        <Link href="/three-fiber-ultia">three fiber ultia</Link>
-      </div>
-      <div>
-        <Link href="/tiptap-test">tiptap</Link>
-      </div>
+    <header className={cx(s.header, "fixed bottom-5 left-5")}>
+      <Popover>
+        <PopoverTrigger className={cx("dark", s.popoverTrigger)} asChild>
+          <Button className="dark" variant="secondary">
+            <span>DEMOS</span>
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className={cx("dark", s.popoverContent)}>
+          <div className="flex flex-col">
+            {links.map((item, i) => {
+              return (
+                <Link className="p-2" href={item.value} key={i}>
+                  {item.label}
+                </Link>
+              )
+            })}
+          </div>
+        </PopoverContent>
+      </Popover>
     </header>
   )
 }

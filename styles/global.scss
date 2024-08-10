@@ -9,22 +9,15 @@
 @import "./_scroll.scss";
 @import "./_tiptap.scss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 // * {
 //   @include outline(red);
 // }
 
 :root {
-  --header-height: #{desktop-vw(100px)};
+  --header-height: #{desktop-vw(30px)};
   --page-padding-top: #{desktop-vw(50px)};
   --upcoming-accordion-height: #{desktop-vw(30px)};
   --nav-height: #{desktop-vw(50px)};
-
-  --font-nb-international-pro: NBInternationalPro;
-  --font-nb-international-pro-mono: NBInternationalProMono;
 
   --spacing-xs: #{desktop-vw(8px)};
   --spacing-sm: #{desktop-vw(15px)};
@@ -44,7 +37,6 @@
     --page-padding-top: #{mobile-vw(30px)};
     --upcoming-accordion-height: #{mobile-vw(30px)};
     --nav-height: #{mobile-vw(30px)};
-    --mobile-padding-x: #{mobile-vw(10px)};
 
     --spacing-xs: #{mobile-vw(8px)};
     --spacing-sm: #{mobile-vw(15px)};

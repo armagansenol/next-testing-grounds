@@ -3,18 +3,19 @@ import { useGLTF } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { BallCollider, RapierRigidBody, RigidBody } from "@react-three/rapier"
 import * as React from "react"
-import { Vector3 } from "three"
+import * as THREE from "three"
 
-export interface ISmileysProps {
-  which: string
-  [key: string]: any
+export interface SmileysProps {
+  which: {
+    [key: string]: any
+  }
 }
 
-export default function Smiley(props: ISmileysProps) {
-  const { which, position } = props
+export default function Smiley(props: SmileysProps) {
+  const { which } = props
 
   const api = React.useRef<RapierRigidBody>(null)
-  const { nodes, materials } = useGLTF("/glb/smileys-transformed.glb")
+  const { nodes, materials } = useGLTF("/glb/ultia-test.glb")
 
   const intensity = 0.1
 
@@ -58,7 +59,7 @@ export default function Smiley(props: ISmileysProps) {
     ) // api.current?.applyTorqueImpulse({ x: Math.random() / 2, y: Math.random() / 2, z: Math.random() / 2 }, true)
   }
 
-  const vec = new Vector3()
+  const vec = new THREE.Vector3()
 
   useFrame((state, delta) => {
     api.current?.applyImpulse(

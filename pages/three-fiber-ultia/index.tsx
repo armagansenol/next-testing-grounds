@@ -28,7 +28,7 @@ const TestSvg = dynamic(() => import("./test-svg"), {
   ssr: false,
 })
 
-const Ice = dynamic(() => import("@/components/ice-model"), {
+const Model = dynamic(() => import("@/components/test-model"), {
   loading: () => (
     <Html>
       <p>Loading...</p>
@@ -40,7 +40,8 @@ const Ice = dynamic(() => import("@/components/ice-model"), {
 export interface ThreeFiberProps {}
 
 export default function ThreeFiber(props: ThreeFiberProps) {
-  const shapes = ["heart", "blink", "blush", "laugh", "heart", "blink", "blush", "laugh"]
+  // const shapes = ["heart", "blink", "blush", "laugh", "heart", "blink", "blush", "laugh"]
+  const shapes = ["ultia-1"]
 
   return (
     <div className={cx(s.wrapper)}>
@@ -58,9 +59,9 @@ export default function ThreeFiber(props: ThreeFiberProps) {
           <Walls />
           <Pointer />
           <TestSvg />
+          {/* <Model /> */}
           {/* <TestJsSvg /> */}
         </Physics>
-        <Ice />
       </Canvas>
     </div>
   )

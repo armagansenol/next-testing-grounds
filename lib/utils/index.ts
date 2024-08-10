@@ -1,4 +1,6 @@
 import { MouseEvent } from "react"
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 export const breakpoints = {
   mobile: 800,
@@ -66,4 +68,8 @@ export function isEven(num: number) {
 
 export function stopPropagation(e: MouseEvent) {
   e.stopPropagation()
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }

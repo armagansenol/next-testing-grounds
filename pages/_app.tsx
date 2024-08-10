@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app"
 import "../styles/global.scss"
+import "../styles/global.css"
 
 import { SmoothLayout } from "@/layouts/smooth"
 import { ClientOnly } from "@/components/utility/isomorphic"

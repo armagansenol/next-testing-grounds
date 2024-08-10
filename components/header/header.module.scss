@@ -1,8 +1,11 @@
 .header {
-  // @include position(fixed, 0, 0, auto, 0);
-  @include dims(auto, var(--header-height));
-  font-size: desktop-vw(10px);
-  padding: desktop-vw(20px) 0;
-  position: relative;
+  z-index: z-index("header");
+}
+
+.popoverTrigger {
+  z-index: z-index("header");
+}
+
+.popoverContent {
   z-index: z-index("header");
 }
