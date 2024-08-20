@@ -1,6 +1,7 @@
-import { MouseEvent } from "react"
 import { type ClassValue, clsx } from "clsx"
+import { MouseEvent } from "react"
 import { twMerge } from "tailwind-merge"
+import { Vector3, Vector4 } from "three"
 
 export const breakpoints = {
   mobile: 800,
@@ -72,4 +73,18 @@ export function stopPropagation(e: MouseEvent) {
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+export function convertHexToGLSLRGBA(hex: string) {
+  var r = parseInt(hex.substring(1, 3), 16) / 255.0
+  var g = parseInt(hex.substring(3, 5), 16) / 255.0
+  var b = parseInt(hex.substring(5, 7), 16) / 255.0
+  return new Vector4(r, g, b, 1)
+}
+
+export function convertHexToGLSLRGB(hex: string) {
+  var r = parseInt(hex.substring(1, 3), 16) / 255.0
+  var g = parseInt(hex.substring(3, 5), 16) / 255.0
+  var b = parseInt(hex.substring(5, 7), 16) / 255.0
+  return new Vector3(r, g, b)
 }

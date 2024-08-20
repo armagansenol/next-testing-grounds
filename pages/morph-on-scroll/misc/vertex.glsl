@@ -24,20 +24,10 @@ void main() {
   // Calculate the distance from the origin
   float distance = length(finalPos);
 
-  // Define color stops
+  // Define colors
   vec3 orange = vec3(0.941, 0.365, 0.129); // #F05D21
-  vec3 gray = vec3(0.5, 0.5, 0.5);
-  vec3 white = vec3(1.0, 1.0, 1.0);
+  vec3 black = vec3(0.0, 0.0, 0.0);
 
-  // Define thresholds for color transitions
-  float grayThreshold = 1.0;
-  float whiteThreshold = 2.0;
-
-  if(distance < grayThreshold) {
-    vColor = mix(orange, gray, distance / grayThreshold);
-  } else if(distance < whiteThreshold) {
-    vColor = mix(gray, white, (distance - grayThreshold) / (whiteThreshold - grayThreshold));
-  } else {
-    vColor = white;
-  }
+  // Mix orange and black based on distance
+  vColor = mix(black, orange, distance);
 }

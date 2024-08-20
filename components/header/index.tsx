@@ -28,6 +28,8 @@ export default function Header() {
     { value: "/transmission-effect", label: "transmission effect" },
     { value: "/morph-on-scroll", label: "morph on scroll" },
     { value: "/pop-slider", label: "pop slider" },
+    { value: "/shaders-test", label: "shaders test" },
+    { value: "/uniform-lerp", label: "uniform lerp" },
   ]
 
   return (

@@ -1,10 +1,20 @@
 import { gsap } from "@/lib/gsap"
-import { OrthographicCamera, PerspectiveCamera, Stats, useGLTF } from "@react-three/drei"
+import { OrthographicCamera, Stats, useGLTF } from "@react-three/drei"
 import { Canvas, useFrame } from "@react-three/fiber"
 import * as React from "react"
 import * as THREE from "three"
 import { MeshSurfaceSampler } from "three/addons/math/MeshSurfaceSampler.js"
 import { shaderOptions } from "./misc/shaderOptions"
+import { GLTF } from "three-stdlib"
+
+type GLTFResult = GLTF & {
+  nodes: {
+    Tek_Leylek: THREE.Mesh
+  }
+  materials: {
+    ["diffuse_Black.004"]: THREE.MeshPhysicalMaterial
+  }
+}
 
 export default function MorphOnScroll() {
   return (
@@ -26,7 +36,7 @@ export default function MorphOnScroll() {
 function Scene() {
   return (
     <Canvas>
-      <color attach="background" args={["#000000"]} />
+      {/* <color attach="background" args={["#000000"]} /> */}
 
       {/* <PerspectiveCamera makeDefault position={[0, 0, 100]} near={0.1} fov={50} /> */}
       <OrthographicCamera makeDefault position={[0, 0, 10]} near={0.1} zoom={300} />
@@ -40,36 +50,16 @@ function Scene() {
       </React.Suspense>
       {/* <Rig /> */}
       {/* <OrbitControls /> */}
-      <EffectComposer>
+      {/* <EffectComposer>
         <HueSaturation saturation={-0.2} />
         <BrightnessContrast brightness={0} contrast={0.25} />
         <TiltShift2 samples={6} blur={0.01} />
         <Bloom mipmapBlur luminanceThreshold={0} intensity={0.2} />
         <ToneMapping />
-      </EffectComposer>
+      </EffectComposer> */}
       <Stats />
     </Canvas>
   )
-}
-
-import { GLTF } from "three-stdlib"
-import {
-  Bloom,
-  BrightnessContrast,
-  EffectComposer,
-  HueSaturation,
-  TiltShift2,
-  ToneMapping,
-  WaterEffect,
-} from "@react-three/postprocessing"
-
-type GLTFResult = GLTF & {
-  nodes: {
-    Tek_Leylek: THREE.Mesh
-  }
-  materials: {
-    ["diffuse_Black.004"]: THREE.MeshPhysicalMaterial
-  }
 }
 
 function Geometry() {
@@ -81,7 +71,7 @@ function Geometry() {
 
   React.useEffect(() => {
     function getGeometryPosition(geometry: THREE.BufferGeometry) {
-      const numParticles = 10000
+      const numParticles = 100000
       const material = new THREE.MeshBasicMaterial()
       const mesh = new THREE.Mesh(geometry, material)
       const sampler = new MeshSurfaceSampler(mesh).build()
