@@ -2,7 +2,7 @@ import { PerspectiveCamera, shaderMaterial, Stats } from "@react-three/drei"
 import { Canvas, extend, ReactThreeFiber, useFrame, useLoader } from "@react-three/fiber"
 import { Suspense, useEffect, useRef } from "react"
 import * as THREE from "three"
-import { shaderOptions } from "./_shaders/shaderOptions"
+import { shaderOptions } from "@/public/shaders/shader-transitions/shaderOptions"
 
 const MyShaderMaterial = shaderMaterial(shaderOptions.uniforms, shaderOptions.vertex, shaderOptions.fragment)
 

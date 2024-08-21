@@ -9,8 +9,8 @@ import * as THREE from "three"
 import { GLTF } from "three-stdlib"
 
 import { convertHexToGLSLRGB } from "@/lib/utils"
-import fragmentShaderWavyVortex from "./_shaders/wavy-vortex/fragment.glsl"
-import vertexShaderWavyVortex from "./_shaders/wavy-vortex/vertex.glsl"
+import fragmentShaderWavyVortex from "@/public/shaders/pop-slider/wavy-vortex/fragment.glsl"
+import vertexShaderWavyVortex from "@/public/shaders/pop-slider/wavy-vortex/vertex.glsl"
 
 interface SliderItemProps {
   active: boolean

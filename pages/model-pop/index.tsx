@@ -5,7 +5,7 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing"
 import { Suspense, useEffect, useMemo, useRef, useState } from "react"
 import * as THREE from "three"
 import { GLTF } from "three-stdlib"
-import ModelControls from "./_shaders/modelControls"
+import ModelControls from "@/public/shaders/model-pop/modelControls"
 
 export interface ModelPopProps {}
 
