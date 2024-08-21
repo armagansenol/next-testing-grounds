@@ -9,7 +9,6 @@ import * as THREE from "three"
 import { GLTF } from "three-stdlib"
 
 import { convertHexToGLSLRGB } from "@/lib/utils"
-import { EffectComposer, TiltShift2 } from "@react-three/postprocessing"
 import fragmentShaderWavyVortex from "./shaders/wavy-vortex/fragment.glsl"
 import vertexShaderWavyVortex from "./shaders/wavy-vortex/vertex.glsl"
 
@@ -44,12 +43,6 @@ function Scene() {
       <ambientLight intensity={0.75} />
 
       <Environment preset="studio" environmentIntensity={0.005} />
-
-      <EffectComposer>
-        <TiltShift2 samples={6} blur={0.05} />
-
-        {/* <Bloom mipmapBlur luminanceThreshold={0} intensity={0.02} /> */}
-      </EffectComposer>
 
       <Rig />
       {/* <OrbitControls /> */}
@@ -410,7 +403,7 @@ function Cup(nodes: GLTFResult["nodes"]) {
         </mesh>
 
         <mesh geometry={nodes.CUsersberkaOneDriveMasaüstüBardak_Altobj.geometry} position={[1.3753624, -79.21138, 0]}>
-          <MeshTransmissionMaterial {...materialProps} side={THREE.DoubleSide} map={packageMap} />
+          <MeshTransmissionMaterial {...materialProps} side={THREE.DoubleSide} />
         </mesh>
       </group>
     </group>
@@ -642,7 +635,21 @@ useGLTF.preload("/glb/bardak.glb")
 // }
 
 const CustomMaterial: React.FC = (props) => {
+  const meshRef = useRef<THREE.Mesh>(null)
   const materialRef = useRef<THREE.ShaderMaterial>(null)
+  const { size, viewport } = useThree()
+
+  // Calculate the aspect ratio
+  const aspectRatio = size.width / size.height
+  const planeWidth = viewport.width * 0.95
+  const planeHeight = (planeWidth / aspectRatio) * 0.95
+
+  useEffect(() => {
+    if (!meshRef.current) return
+
+    const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight)
+    meshRef.current.geometry = geometry
+  }, [planeWidth, planeHeight])
 
   // const uniforms = useMemo(
   //   () => ({
@@ -660,11 +667,11 @@ const CustomMaterial: React.FC = (props) => {
   //   []
   // )
 
-  const { ringDistance, maxRings, waveCount, waveDepth, yCenter, direction } = useControls({
+  const controls = useControls({
     ringDistance: {
       value: 0.05,
-      min: 0.04,
-      max: 0.06,
+      min: 0.0,
+      max: 1.0,
       step: 0.00125,
     },
     maxRings: {
@@ -702,32 +709,32 @@ const CustomMaterial: React.FC = (props) => {
   const uniforms = useMemo(
     () => ({
       color: { value: new THREE.Color().setFromVector3(convertHexToGLSLRGB("#0075CE")) },
-      ringDistance: { value: ringDistance },
-      maxRings: { value: maxRings },
-      waveCount: { value: waveCount },
-      waveDepth: { value: waveDepth },
-      yCenter: { value: yCenter },
-      direction: { value: direction },
+      ringDistance: { value: controls.ringDistance },
+      maxRings: { value: controls.maxRings },
+      waveCount: { value: controls.waveCount },
+      waveDepth: { value: controls.waveDepth },
+      yCenter: { value: controls.yCenter },
+      direction: { value: controls.direction },
       time: { value: 0 },
       width: { value: 0 },
       height: { value: 0 },
     }),
-    [ringDistance, maxRings, waveCount, waveDepth, yCenter, direction]
+    []
   )
 
   useFrame(({ clock, size }) => {
-    if (materialRef.current) {
-      materialRef.current.uniforms.time.value = clock.getElapsedTime() * 0.25
-      materialRef.current.uniforms.width.value = size.width * 2
-      materialRef.current.uniforms.height.value = size.height * 1.6
+    if (!materialRef.current) return
 
-      materialRef.current.uniforms.ringDistance.value = ringDistance
-      materialRef.current.uniforms.maxRings.value = maxRings
-      materialRef.current.uniforms.waveCount.value = waveCount
-      materialRef.current.uniforms.waveDepth.value = waveDepth
-      materialRef.current.uniforms.yCenter.value = yCenter
-      materialRef.current.uniforms.direction.value = direction
-    }
+    materialRef.current.uniforms.time.value = clock.getElapsedTime() * 0.25
+    materialRef.current.uniforms.width.value = size.width
+    materialRef.current.uniforms.height.value = size.height
+
+    materialRef.current.uniforms.ringDistance.value = controls.ringDistance
+    materialRef.current.uniforms.maxRings.value = controls.maxRings
+    materialRef.current.uniforms.waveCount.value = controls.waveCount
+    materialRef.current.uniforms.waveDepth.value = controls.waveDepth
+    materialRef.current.uniforms.yCenter.value = controls.yCenter
+    materialRef.current.uniforms.direction.value = controls.direction
   })
 
   const colors = useRef([
@@ -765,7 +772,8 @@ const CustomMaterial: React.FC = (props) => {
 
   return (
     <mesh
-      geometry={new THREE.PlaneGeometry(7, 3.5)}
+      ref={meshRef}
+      geometry={new THREE.PlaneGeometry(planeWidth, planeHeight)}
       castShadow={false}
       receiveShadow={false}
       onPointerDown={handlePointerDown}
@@ -787,5 +795,5 @@ function WavyVortex() {
 function Rig() {
   const { camera, pointer } = useThree()
   const vec = new THREE.Vector3()
-  return useFrame(() => camera.position.lerp(vec.set(pointer.x / 4, pointer.y / 16, camera.position.z), 0.09))
+  return useFrame(() => camera.position.lerp(vec.set(pointer.x / 8, pointer.y / 32, camera.position.z), 0.09))
 }

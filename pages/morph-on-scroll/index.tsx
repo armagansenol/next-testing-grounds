@@ -124,58 +124,62 @@ function Geometry() {
     function setScroll() {
       if (!meshRef.current) return
 
-      gsap
-        .timeline({
-          defaults: {},
+      const material = meshRef.current.material
+
+      if (material instanceof THREE.ShaderMaterial) {
+        gsap
+          .timeline({
+            defaults: {},
+            scrollTrigger: {
+              trigger: "body",
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 0.7,
+            },
+          })
+          .to(meshRef.current.rotation, {
+            x: Math.PI * 2,
+            y: Math.PI * 2,
+            z: Math.PI * 2,
+          })
+
+        gsap.to(material.uniforms.u_sec1, {
+          value: 1.0,
           scrollTrigger: {
-            trigger: "body",
-            start: "top top",
-            end: "bottom bottom",
+            trigger: ".s-1",
+            start: "bottom bottom",
+            end: "bottom top",
             scrub: 0.7,
           },
         })
-        .to(meshRef.current.rotation, {
-          x: Math.PI * 2,
-          y: Math.PI * 2,
-          z: Math.PI * 2,
+        gsap.to(material.uniforms.u_sec2, {
+          value: 1.0,
+          scrollTrigger: {
+            trigger: ".s-2",
+            start: "bottom bottom",
+            end: "bottom top",
+            scrub: 0.7,
+          },
         })
-
-      gsap.to(meshRef.current.material.uniforms.u_sec1, {
-        value: 1.0,
-        scrollTrigger: {
-          trigger: ".s-1",
-          start: "bottom bottom",
-          end: "bottom top",
-          scrub: 0.7,
-        },
-      })
-      gsap.to(meshRef.current.material.uniforms.u_sec2, {
-        value: 1.0,
-        scrollTrigger: {
-          trigger: ".s-2",
-          start: "bottom bottom",
-          end: "bottom top",
-          scrub: 0.7,
-        },
-      })
-      gsap.to(meshRef.current.material.uniforms.u_sec3, {
-        value: 1.0,
-        scrollTrigger: {
-          trigger: ".s-3",
-          start: "bottom bottom",
-          end: "bottom top",
-          scrub: 0.7,
-        },
-      })
-      gsap.to(meshRef.current.material.uniforms.u_sec4, {
-        value: 1.0,
-        scrollTrigger: {
-          trigger: ".s-4",
-          start: "bottom bottom",
-          end: "bottom top",
-          scrub: 0.7,
-        },
-      })
+        gsap.to(material.uniforms.u_sec3, {
+          value: 1.0,
+          scrollTrigger: {
+            trigger: ".s-3",
+            start: "bottom bottom",
+            end: "bottom top",
+            scrub: 0.7,
+          },
+        })
+        gsap.to(material.uniforms.u_sec4, {
+          value: 1.0,
+          scrollTrigger: {
+            trigger: ".s-4",
+            start: "bottom bottom",
+            end: "bottom top",
+            scrub: 0.7,
+          },
+        })
+      }
     }
 
     setMesh()

@@ -19,13 +19,10 @@ type GLTFResult = GLTF & {
   }
 }
 
-type ActionName = "Dis UstAction" | "Dis AltAction"
-type GLTFActions = Record<ActionName, THREE.AnimationAction>
-
 export default function ToothModel(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null)
   const { nodes, materials, animations } = useGLTF("/glb/tooth.glb") as GLTFResult
-  const { actions } = useAnimations<GLTFActions>(animations, group)
+  const { actions } = useAnimations(animations, group)
 
   const meshRef = useRef<any>()
   const mesh2Ref = useRef<any>()

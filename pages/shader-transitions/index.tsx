@@ -114,17 +114,24 @@ function Geometry() {
         <mesh ref={meshRef} geometry={new THREE.PlaneGeometry(15, 10)}>
           <myShaderMaterial
             attach="material"
-            time={0}
-            progress={1}
-            width={2}
-            scaleX={4}
-            scaleY={10}
-            texture1={tex1}
-            texture2={tex2}
-            displacement={displacement}
-            resolution={
-              new THREE.Vector4(window.innerWidth, window.innerHeight, 1.0, window.innerHeight / window.innerWidth)
-            }
+            uniforms={{
+              progress: { value: 1 },
+              width: { value: 2 },
+              scaleX: { value: 4 },
+              scaleY: { value: 10 },
+              texture1: { value: tex1 },
+              texture2: { value: tex2 },
+              displacement: { value: displacement },
+              resolution: {
+                value: new THREE.Vector4(
+                  window.innerWidth,
+                  window.innerHeight,
+                  1.0,
+                  window.innerHeight / window.innerWidth
+                ),
+              },
+              time: { value: 0 },
+            }}
             toneMapped={false}
           />
         </mesh>
