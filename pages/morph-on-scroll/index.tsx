@@ -4,8 +4,22 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import * as React from "react"
 import * as THREE from "three"
 import { MeshSurfaceSampler } from "three/addons/math/MeshSurfaceSampler.js"
-import { shaderOptions } from "./misc/shaderOptions"
 import { GLTF } from "three-stdlib"
+
+import fragmentShader from "./misc/fragment.glsl"
+import vertexShader from "./misc/vertex.glsl"
+
+export const shaderOptions = {
+  debug: true,
+  uniforms: {
+    u_sec1: { type: "f", value: 0.0 },
+    u_sec2: { type: "f", value: 0.0 },
+    u_sec3: { type: "f", value: 0.0 },
+    u_sec4: { type: "f", value: 0.0 },
+  },
+  vertex: vertexShader,
+  fragment: fragmentShader,
+}
 
 type GLTFResult = GLTF & {
   nodes: {
