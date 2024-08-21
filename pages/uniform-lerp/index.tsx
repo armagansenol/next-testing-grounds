@@ -4,8 +4,8 @@ import { Perf } from "r3f-perf"
 import * as React from "react"
 import * as THREE from "three"
 
-import vertexShader from "./shaders/vertex.glsl"
-import fragmentShader from "./shaders/fragment.glsl"
+import vertexShader from "./_shaders/vertex.glsl"
+import fragmentShader from "./_shaders/fragment.glsl"
 import { convertHexToGLSLRGB } from "@/lib/utils"
 
 export default function UniformLerp() {
