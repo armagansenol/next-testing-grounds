@@ -10,7 +10,6 @@ export default function Header() {
   const links = [
     { value: "/", label: "home" },
     { value: "/page-two", label: "page two" },
-    { value: "/file-upload", label: "file upload" },
     { value: "/form-test", label: "form test" },
     { value: "/matter-js", label: "matter.js" },
     { value: "/matter-js-2", label: "matter.js 2" },
@@ -25,7 +24,6 @@ export default function Header() {
     { value: "/transmission-effect", label: "transmission effect" },
     { value: "/morph-on-scroll", label: "morph on scroll" },
     { value: "/pop-slider", label: "pop slider" },
-    { value: "/shaders-test", label: "shaders test" },
     { value: "/uniform-lerp", label: "uniform lerp" },
   ]
 
