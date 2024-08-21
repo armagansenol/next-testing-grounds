@@ -1,21 +1,6 @@
-import { gsap } from "@/lib/gsap"
-import {
-  Environment,
-  Float,
-  MeshTransmissionMaterial,
-  OrbitControls,
-  PerspectiveCamera,
-  Stats,
-} from "@react-three/drei"
+import { MeshTransmissionMaterial, OrbitControls, PerspectiveCamera, Stats } from "@react-three/drei"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
-import {
-  Bloom,
-  BrightnessContrast,
-  EffectComposer,
-  HueSaturation,
-  TiltShift2,
-  ToneMapping,
-} from "@react-three/postprocessing"
+import { Bloom, BrightnessContrast, EffectComposer, HueSaturation, TiltShift2 } from "@react-three/postprocessing"
 import { useControls } from "leva"
 import * as React from "react"
 import * as THREE from "three"

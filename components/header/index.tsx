@@ -9,7 +9,6 @@ import { Link } from "@/components/utility/link"
 export default function Header() {
   const links = [
     { value: "/", label: "home" },
-    { value: "/page-two", label: "page two" },
     { value: "/form-test", label: "form test" },
     { value: "/matter-js", label: "matter.js" },
     { value: "/matter-js-2", label: "matter.js 2" },
