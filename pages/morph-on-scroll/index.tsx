@@ -6,8 +6,8 @@ import * as THREE from "three"
 import { MeshSurfaceSampler } from "three/addons/math/MeshSurfaceSampler.js"
 import { GLTF } from "three-stdlib"
 
-import fragmentShader from "./misc/fragment.glsl"
-import vertexShader from "./misc/vertex.glsl"
+import fragmentShader from "./shaders/fragment.glsl"
+import vertexShader from "./shaders/vertex.glsl"
 
 export const shaderOptions = {
   debug: true,
