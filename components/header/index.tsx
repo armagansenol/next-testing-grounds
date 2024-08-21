@@ -22,7 +22,6 @@ export default function Header() {
     { value: "/three-slider", label: "three slider" },
     { value: "/shader-transitions", label: "shader transitions" },
     { value: "/transmission-effect", label: "transmission effect" },
-    { value: "/morph-on-scroll", label: "morph on scroll" },
     { value: "/pop-slider", label: "pop slider" },
     { value: "/uniform-lerp", label: "uniform lerp" },
   ]
